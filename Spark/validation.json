@@ -1,0 +1,107 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://hl7.org/fhir/json-schema/Patient",	
+	"type": "object",	
+	"required": ["identifier", "name"],
+	"properties": {
+		"identifier": {
+			"type": "array",			
+			"items": {
+				"$ref": "#/definitions/Identifier"
+			}
+		},		
+		"birthDate": {
+			"type": "string",
+			"pattern": "^\\s*$|-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?"
+		},
+		"gender": {
+			"type": "string",
+			"enum": [
+				"male",
+				"female",
+				"other",
+				"unknown"
+			]			
+		},
+		"name": {
+			"type": "array",
+			"maxItems": 1,
+			"items": {
+				"$ref": "#/definitions/Name"
+			}
+		},
+		"address": {
+			"type": "array",
+      "items": {
+        "$ref":  "#/definitions/Address"
+      }
+		}
+	},
+	"definitions": {		
+		"Identifier": {
+			"properties": {
+				"assigner": {
+					"$ref": "#/definitions/Assigner"					
+				},
+				"system": {
+					"type": "string",
+					"pattern": "urn:oid:[0-2](\\.[1-9]\\d*){10}"
+				}
+			}
+		},
+    "Name": {
+      "properties": {
+        "family": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Element"
+          }
+        },
+        "given": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Element"
+          }
+        }
+      }
+    },
+    "Address": {
+      "properties": {
+        "line": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "city": {
+          "type": "string"
+        },
+        "district": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        }
+      }
+    },
+		"Assigner": {
+			"properties": {
+				"display": {
+					"type": "string",
+					"pattern": "urn:oid:1.2.643.2.69.1.2"
+				}
+			}
+		},
+		"Element": {
+			"properties": {
+				"value": {
+					"type": "string"
+				}
+			}
+		}
+	}	
+}
+  

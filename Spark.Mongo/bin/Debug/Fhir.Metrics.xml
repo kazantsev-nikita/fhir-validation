@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fhir.Metrics</name>
+    </assembly>
+    <members>
+        <member name="M:Fhir.Metrics.Metric.Axis.UnPrefix(Fhir.Metrics.Exponential)">
+            <summary>
+            Converts an number value to represent the value of the axis unit without a prefix.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fhir.Metrics.Metric.Axis.UnPrefixed">
+            <summary>
+            Return the axis without it's prefix. To be used in combination of ToBase 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Fhir.Metrics.Metric.Axis.Prefixed">
+            <summary>
+            Returns true if the axis has no prefix
+            </summary>
+        </member>
+        <member name="P:Fhir.Metrics.Metric.Axis.IsVoid">
+            <summary>
+            Returns true if the axis has no meaning (exponent is zero)
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.Exponential.Divide(Fhir.Metrics.Exponential,Fhir.Metrics.Exponential)">
+            <summary>
+            Divides two exponentials
+            </summary>
+            <param name="a">numerator</param>
+            <param name="b">denominator</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fhir.Metrics.Exponential.Approximates(Fhir.Metrics.Exponential)">
+            <summary>
+            Tests if the an number including error margin lies within the error margin of the given value.
+            </summary>
+            <param name="e">the value that determines the range</param>
+        </member>
+        <member name="M:Fhir.Metrics.Exponential.Raise(Fhir.Metrics.Exponential,System.Int32)">
+            <summary>
+            Raise value with 10^digits.
+            </summary>
+        </member>
+        <member name="P:Fhir.Metrics.Exponential.One">
+            <summary>
+            Returns Exponential of exactly 1 with no measurement error.
+            </summary>
+        </member>
+        <member name="P:Fhir.Metrics.Exponential.Zero">
+            <summary>
+            Returns Exponential of exactly 0 with no measurement error.
+            </summary>
+        </member>
+        <member name="T:Fhir.Metrics.RegexLinq">
+            <summary>
+            Class for making RegEx components accessible in Linq statements.
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.RegexLinq.Groups(System.Text.RegularExpressions.Match)">
+            <summary>
+            Enumerates all groups of the RegEx match
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.RegexLinq.Values(System.Text.RegularExpressions.CaptureCollection)">
+            <summary>
+            Enumerates all capture values in a RegEx CaptureCollection
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.RegexLinq.Captures(System.Text.RegularExpressions.Group)">
+            <summary>
+            Enumerates all capture values in a RegEx group
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.RegexLinq.Captures(System.Text.RegularExpressions.Match,System.String)">
+            <summary>
+            Enumerates all named capture values in a RegEx match 
+            </summary>
+            <param name="match">The RegEx Match instance</param>
+            <param name="name">The name of the captures to enumerate</param>
+        </member>
+        <member name="M:Fhir.Metrics.RegexLinq.Successes(System.Text.RegularExpressions.Match)">
+            <summary>
+            Enumerates all groups that were succesful in a RegEx match.
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.RegexLinq.Captures(System.Text.RegularExpressions.Match)">
+            <summary>
+            Enumerates all succesful capture values of a RegEx match excluding the capture of the string as a whole 
+            </summary>
+        </member>
+        <member name="T:Fhir.Metrics.SearchExtensions">
+            <summary>
+            Extensions to convert Quantity components to a searchable string
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.SearchExtensions.LeftSearchableNumberString(System.String)">
+            <summary>
+             Creates a string from a decimal that allows compare-from-left string searching 
+             for finding values that fall within a the precision of a given string representing a decimal .
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.SearchExtensions.ValueAsSearchablestring(Fhir.Metrics.Quantity)">
+            <summary>
+            Transforms the value of a quantity to a string that can be compared from the left.
+            Each Digit caries the significance of the original digits more to the right.
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.SearchExtensions.LeftSearchableString(Fhir.Metrics.Quantity)">
+            <summary>
+            Transforms the units and the value of a quantity to a single string that can be compared from the left.
+            Each Digit caries the significance of the original digits more to the right.
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.Conversions.canonicalize(Fhir.Metrics.Quantity@)">
+            <summary>
+            Tries to convert each axis of the metric of the quantity once.
+            </summary>
+            <returns>true if a change has been made</returns>
+        </member>
+        <member name="M:Fhir.Metrics.Conversions.Canonical(Fhir.Metrics.Quantity)">
+            <summary>
+            Converts a Quantity to it's canonical form in base units without prefixes
+            </summary>
+        </member>
+        <member name="T:Fhir.Metrics.UCUM">
+            <summary>
+            Static class to give access to UCUM properties 
+            </summary>
+        </member>
+        <member name="F:Fhir.Metrics.UCUM.Uri">
+            <summary>
+            THe identifying URI for the UCUM system
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.UCUM.Load">
+            <summary>
+            Loads the internal resource with UCUM data into a <b>SystemOfUnits</b> class
+            </summary>
+        </member>
+        <member name="T:Fhir.Metrics.SystemOfUnits">
+            <summary>
+            A system that contains units, prefixes and conversions between the units
+            </summary>
+        </member>
+        <member name="F:Fhir.Metrics.SystemOfUnits.Metrics">
+            <summary>
+            The Metric system of the system of units
+            </summary>
+        </member>
+        <member name="F:Fhir.Metrics.SystemOfUnits.Conversions">
+            <summary>
+            The list of conversions that can convert from one unit to another
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.AddConversion(System.String,System.String,Fhir.Metrics.ConversionMethod)">
+            <summary>
+            Adds a conversion rule to the system
+            </summary>
+            <param name="symbolfrom">A single unit symbol that is known in the system</param>
+            <param name="symbolto">A formula containing numbers and unit symbols defining the target units</param>
+            <param name="method">A delegate that does the actual conversion of an Exponential</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.AddPrefix(System.String,System.String,Fhir.Metrics.Exponential)">
+            <summary>
+            Addes a prefix to the system
+            </summary>
+            <param name="name">The name of the prefix (for example "Kilo")</param>
+            <param name="symbol">The symbol for the prefix (for example "k")</param>
+            <param name="factor">The multiplication factor (in case of kilo, 1000)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.AddUnit(System.String,System.String,System.String)">
+            <summary>
+            Adds a unit to the system
+            </summary>
+            <param name="name">The name of the unit (for example 'Newton')</param>
+            <param name="symbol">The symbol for the unit ('N')</param>
+            <param name="dimension">If the unit is a fundamental unit, the dimension that the unit is expressed in (A meter would be in dimension length)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.Quantity(Fhir.Metrics.Exponential,System.String)">
+            <summary>
+            Builds a quantity from an Exponential and a metric (parsed from the symbols)
+            </summary>
+            <param name="value">The number part of a quantity</param>
+            <param name="symbols">
+            An expression containing units that are separated by a multiplication '.' or division '/' and can be followed 
+            by a power. <para> For example: kg.m.s-2 or kg.m/s2</para>
+            </param>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.Quantity(System.String,System.String)">
+            <summary>
+            Parses a value and symbol string to a Quantity
+            </summary>
+            <param name="value">A number as a string. May contain a decimal power (e)</param>
+            <param name="symbols">
+            An expression containing units that are separated by a multiplication '.' or division '/' and can be followed 
+            by a power. <para> For example: kg.m.s-2 or kg.m/s2</para>
+            </param>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.Quantity(System.String)">
+            <summary>
+            Parses a string expression containing a number and a set of units to a quantity.
+            </summary>
+            <param name="expression">
+            Must be a number followed by a unit expression (metric).
+            The units are separated by a multiplication '.' or division '/' and can be followed 
+            by a power. <para> For example: 1.2e4kg.m.s-2 or 1.2e4kg.m/s2</para>
+            </param>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.Metric(System.String)">
+            <summary>
+            Parses a string containing a set of units to a metric.
+            </summary>
+            <param name="expression">
+            Must be a set of known units separated by a multiplication '.' or division '/' and can be followed 
+            by a power. <para> For example: 1.2e4kg.m.s-2 or 1.2e4kg.m/s2 </para>
+            </param>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.Canonical(Fhir.Metrics.Quantity)">
+            <summary>
+            Converts a quantity to standardized units without a prefix
+            </summary>
+        </member>
+        <member name="M:Fhir.Metrics.SystemOfUnits.Canonical(System.String)">
+            <summary>
+            Interprets an expression as a quantity and converts this to standardized units without a prefix
+            </summary>
+        </member>
+    </members>
+</doc>
